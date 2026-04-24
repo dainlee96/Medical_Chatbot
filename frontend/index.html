@@ -167,7 +167,7 @@
 
             try {
                 // 비동기 백엔드 호출
-                const response = await fetch('http://localhost:8000/api/chat', {
+                const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ user_id: '멘티', message: message })
@@ -186,7 +186,7 @@
         async function checkStatus(taskId, skeletonElement) {
             const poll = setInterval(async () => {
                 try {
-                    const res = await fetch(`http://localhost:8000/api/chat/${taskId}`);
+                    const res = await fetch(`/api/chat/${taskId}`);
                     const data = await res.json();
                     
                     if (data.status === 'completed') {
