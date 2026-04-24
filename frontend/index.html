@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +9,29 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Pretendard', -apple-system, sans-serif; }
-        
+        body {
+            font-family: 'Pretendard', -apple-system, sans-serif;
+        }
+
         /* 매끄러운 배경 그라디언트 애니메이션 */
         .bg-animated {
             background: linear-gradient(-45deg, #f0f4ff, #e0e7ff, #f8fafc, #eff6ff);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
+
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         /* 글래스모피즘 컨테이너 */
@@ -35,36 +47,72 @@
         .message-enter {
             animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+
         @keyframes slideUpFade {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 타이핑 애니메이션 */
         .typing-dot {
             animation: typing 1.4s infinite ease-in-out both;
         }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
         @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); opacity: 0.3;}
-            40% { transform: scale(1); opacity: 1;}
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+                opacity: 0.3;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* 스크롤바 숨기기 (깔끔한 UI용) */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(203, 213, 225, 0.5); border-radius: 10px; }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(203, 213, 225, 0.5);
+            border-radius: 10px;
+        }
     </style>
 </head>
+
 <body class="bg-animated min-h-screen flex items-center justify-center p-4 sm:p-8">
 
     <div class="w-full max-w-2xl glass-container rounded-3xl flex flex-col h-[80vh] min-h-[600px] overflow-hidden">
-        
+
         <!-- 프리미엄 헤더 -->
         <div class="px-8 py-6 border-b border-white/40 bg-white/40 backdrop-blur-md flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
                     <i class="fa-solid fa-stethoscope text-xl"></i>
                 </div>
                 <div>
@@ -76,21 +124,25 @@
                 </div>
             </div>
             <div class="hidden sm:block">
-                <span class="px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-xs font-semibold tracking-wide border border-blue-100">
+                <span
+                    class="px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-xs font-semibold tracking-wide border border-blue-100">
                     BETA
                 </span>
             </div>
         </div>
-        
+
         <!-- 채팅 영역 -->
         <div id="chat-box" class="flex-1 p-8 overflow-y-auto flex flex-col gap-6 bg-transparent">
             <!-- 초기 메시지 -->
             <div class="flex items-start gap-4 message-enter">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-50 flex items-center justify-center flex-shrink-0 border border-blue-200">
+                <div
+                    class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-50 flex items-center justify-center flex-shrink-0 border border-blue-200">
                     <span class="text-blue-600 text-lg"><i class="fa-solid fa-robot"></i></span>
                 </div>
-                <div class="bg-white rounded-2xl rounded-tl-sm px-5 py-4 shadow-sm border border-slate-100 text-[15px] text-slate-700 leading-relaxed max-w-[85%]">
-                    안녕하세요 다인님! 저는 수강생 분들이 비동기 구조를 쉽게 이해할 수 있도록 만들어진 <b>의료 RAG 데모 봇</b>입니다.<br><br>어떤 증상이 있으신가요? 말씀해주시면 가장 가까운 진료과와 정보를 안내해 드릴게요.
+                <div
+                    class="bg-white rounded-2xl rounded-tl-sm px-5 py-4 shadow-sm border border-slate-100 text-[15px] text-slate-700 leading-relaxed max-w-[85%]">
+                    안녕하세요 다인님! 저는 수강생 분들이 비동기 구조를 쉽게 이해할 수 있도록 만들어진 <b>의료 RAG 데모 봇</b>입니다.<br><br>어떤 증상이 있으신가요? 말씀해주시면
+                    가장 가까운 진료과와 정보를 안내해 드릴게요.
                 </div>
             </div>
         </div>
@@ -98,16 +150,17 @@
         <!-- 하단 입력 영역 -->
         <div class="p-6 bg-white/60 backdrop-blur-md border-t border-white/40">
             <div class="relative flex items-center">
-                <input type="text" id="user-input" 
-                    class="w-full bg-white/90 border border-slate-200 rounded-2xl pl-5 pr-14 py-4 text-[15px] text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 shadow-sm transition-all" 
-                    placeholder="예: 목이 붓고 침 삼키기가 힘들어요" 
-                    onkeypress="if(event.key === 'Enter') sendMessage()">
-                <button onclick="sendMessage()" 
+                <input type="text" id="user-input"
+                    class="w-full bg-white/90 border border-slate-200 rounded-2xl pl-5 pr-14 py-4 text-[15px] text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 shadow-sm transition-all"
+                    placeholder="예: 목이 붓고 침 삼키기가 힘들어요" onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()"
                     class="absolute right-2 w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-md transition-all flex items-center justify-center group active:scale-95">
-                    <i class="fa-solid fa-paper-plane text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                    <i
+                        class="fa-solid fa-paper-plane text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                 </button>
             </div>
-            <p class="text-center text-xs text-slate-400 mt-3 font-medium">본 시스템은 멘토링 데모용이며, 실제 전문적인 의료 진단을 대체할 수 없습니다.</p>
+            <p class="text-center text-xs text-slate-400 mt-3 font-medium">본 시스템은 멘토링 데모용이며, 실제 전문적인 의료 진단을 대체할 수 없습니다.
+            </p>
         </div>
     </div>
 
@@ -118,11 +171,11 @@
         function appendMessage(sender, text, isSkeleton = false) {
             const wrapper = document.createElement('div');
             wrapper.className = `flex items-start gap-4 message-enter ${sender === 'user' ? 'flex-row-reverse' : ''}`;
-            
-            let avatar = sender === 'user' 
-                ? `<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 border border-slate-200"><span class="text-slate-500"><i class="fa-solid fa-user"></i></span></div>` 
+
+            let avatar = sender === 'user'
+                ? `<div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 border border-slate-200"><span class="text-slate-500"><i class="fa-solid fa-user"></i></span></div>`
                 : `<div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-indigo-50 flex items-center justify-center flex-shrink-0 border border-blue-200"><span class="text-blue-600 text-lg"><i class="fa-solid fa-robot"></i></span></div>`;
-            
+
             let content = '';
             if (isSkeleton) {
                 // 고급진 타이핑 스켈레톤
@@ -134,17 +187,17 @@
                     <span class="text-[13px] text-blue-500 font-medium ml-2 tracking-wide">문헌 분석 중...</span>
                 </div>`;
             } else {
-                let bgClass = sender === 'user' 
-                    ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl rounded-tr-sm shadow-md shadow-blue-500/20' 
+                let bgClass = sender === 'user'
+                    ? 'bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-2xl rounded-tr-sm shadow-md shadow-blue-500/20'
                     : 'bg-white text-slate-700 rounded-2xl rounded-tl-sm shadow-sm border border-slate-100';
-                
+
                 const formattedText = text
                     .replace(/\*\*(.*?)\*\*/g, '<b class="font-semibold text-indigo-700">$1</b>') // 볼드 처리 시 색상 포인트
                     .replace(/\n/g, '<br>');
 
                 // 유저 메시지일 경우 텍스트 색상 예외처리
-                const finalHtml = sender === 'user' 
-                    ? text 
+                const finalHtml = sender === 'user'
+                    ? text
                     : formattedText;
 
                 content = `<div class="px-5 py-4 text-[15px] leading-relaxed max-w-[85%] ${bgClass}">${finalHtml}</div>`;
@@ -167,14 +220,15 @@
 
             try {
                 // 비동기 백엔드 호출
+                // const response = await fetch('http://localhost:8000/api/chat', {
                 const response = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ user_id: '멘티', message: message })
                 });
-                
+
                 const data = await response.json();
-                
+
                 // 폴링
                 checkStatus(data.task_id, skeletonWrapper);
             } catch (error) {
@@ -186,9 +240,10 @@
         async function checkStatus(taskId, skeletonElement) {
             const poll = setInterval(async () => {
                 try {
+                    // const res = await fetch(`http://localhost:8000/api/chat/${taskId}`);
                     const res = await fetch(`/api/chat/${taskId}`);
                     const data = await res.json();
-                    
+
                     if (data.status === 'completed') {
                         clearInterval(poll);
                         skeletonElement.remove();
@@ -205,4 +260,5 @@
         }
     </script>
 </body>
+
 </html>
