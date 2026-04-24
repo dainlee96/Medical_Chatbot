@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Vector DB (ChromaDB) 로컬 데이터
+chroma_db/
+*.sqlite3
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
